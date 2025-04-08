@@ -1,20 +1,33 @@
-// Enigma machine simulator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+#include "engima_machine.h"
+#include <string>
+#include <iostream>
+
+//makes uppercase letters lowercase and removes spaces.
+std::string userInputFilter(std::string s) {
+  s.erase(std::remove(s.begin(), s.end(), ' '), s.end()); //removes spaces
+  std::transform(s.begin(), s.end(), s.begin(), ::tolower); // changes uppercase chars to lowercase
+  return s;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+int main()
+{
+    std::cout << "Engima Simulator\n";
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    //There are only lowercase characters and no spaces.
+
+
+
+    EnigmaMachine::Machine Engima;
+    std::string user_input = "hello kaIAUHWFIpar";    
+    std::string x = userInputFilter(user_input);
+    std::cout << x;
+
+    std::string result = Engima.start(x);
+    
+
+    std::cout << result;
+
+}
